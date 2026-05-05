@@ -1,0 +1,311 @@
+* {
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+}
+
+body {
+  background: #000000;
+  /* background: linear-gradient(45deg, rgba(0, 0, 0, 1) 0%, rgba(21, 9, 28, 1) 59%, rgba(77, 30, 102, 1) 100%); */
+  background-color: black;
+  color: white;
+  margin: 0;
+
+  /* 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); */
+}
+
+/* header css ------------------------------------------>*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0% 2%;
+  padding: 15px 40px;
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  height: 120px;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.header.hide {
+  opacity: 0;
+}
+
+.navigation nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navigation nav a {
+  text-decoration: none;
+  color: white;
+}
+
+.navigation nav a {
+  font-size: 1.125rem;
+}
+
+.navigation nav button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  background:
+    linear-gradient(#111, #111) padding-box,
+    linear-gradient(270deg, #00f0ff, #8a2be2, #00f0ff) border-box;
+
+  background-size: 100% 100%, 300% 300%;
+  background-position: 0% 0%, 0% 50%;
+
+  animation: borderFlow 2s linear infinite;
+  animation-play-state: paused;
+}
+
+.navigation nav button:hover {
+  animation-play-state: running;
+}
+
+@keyframes borderFlow {
+  0% {
+    background-position: 0% 0%, 0% 50%;
+  }
+
+  100% {
+    background-position: 0% 0%, 300% 50%;
+  }
+}
+
+/* header css ------------------------------------------>*/
+
+/* hero css -----------------------------------------------> */
+.hero {
+  padding-top: 80px;
+  padding-bottom: 50px;
+  padding-left: 2%;
+  padding-right: 2%;
+  display: flex;
+  position: relative;
+  height: 100vh;
+
+}
+
+.hero .firstSection {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+}
+
+.hero .firstSection span {
+  font-size: 6rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 0.9;
+  z-index: 99
+}
+
+.hero .firstSection span:nth-child(2) {
+  font-family: "Anton", "Inter", sans-serif;
+
+  font-size: 8rem;
+}
+
+.hero .firstSection span:last-child {
+  font-size: 5rem;
+
+}
+
+
+
+
+.hero .hero3js {
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+
+/* .hero .secondSection{
+    width: 50%;
+} */
+/* hero css ------------------------------------------>*/
+
+
+
+/* about css ----------------------------> */
+
+.background-border {
+  height: 100%;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  background-color: rgb(26, 26, 26);
+}
+
+.box {
+  height: 100%;
+  width: 100%;
+  border: solid 1px rgba(94, 94, 94, 0.5);
+}
+
+.About {
+  position: relative;
+  /* 👈 REQUIRED */
+  z-index: 9;
+  font-weight: 800;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.About-content {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  z-index: 20;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+
+
+.About .About-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about-header-container span{
+    font-weight: 300;
+}
+
+.about-header-container h2{
+    font-size: 3rem;
+    font-family: anton;
+    text-transform: uppercase;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+
+
+
+.about-text p {
+  font-size: 1.2rem;
+  width: 500px;
+  font-weight: 300;
+  text-align: right;
+}
+
+.about-text {
+  width: 50%;
+}
+
+.about-text-p {
+  display: flex;
+  justify-content: end;
+}
+
+
+
+.circle {
+
+  border-radius: 50%;
+  width: 250px;
+  background: rgb(68, 68, 68);
+}
+
+.rotate {
+  transform-origin: 100px 100px;
+  /* center of SVG */
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.container.white,
+.container.green {
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+}
+
+.container.white {
+  background: #ebedec;
+}
+
+
+.container.green {
+  background: #729e84;
+}
+
+.container.white span,
+.container.green span {
+  font-family: Anton;
+  text-transform: uppercase;
+  font-size: 5rem;
+  color: rgb(26, 26, 26);
+}
+
+.container p,
+.container span {
+  color: rgb(26, 26, 26);
+}
+
+.container.green span,
+.container.green p {
+  color: #ebedec;
+}
+
+.container-number {
+  width: 50%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.container-number span {
+  font-size: 9rem !important;
+  letter-spacing: 5px;
+}
+
+.container.green .container-number span {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.container.white .container-number span {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between
+}
+
+
+
+
+
+
+/* about css ----------------------------> */
