@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import RCM from '../assets/RCM-white.svg'
 
 
 export default function Header() {
@@ -31,7 +32,7 @@ export default function Header() {
     return (
         <div className={`header ${hide ? "hide" : ""}`}>
             <div className="logo">
-                <h1>LOGO</h1>
+                <img src={RCM} alt="RCM" />
             </div>
             <div className="navigation">
                 <nav>
