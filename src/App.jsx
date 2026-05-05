@@ -20,6 +20,8 @@ function App() {
       <Header />
       <Hero />
       <Content />
+      <Content />
+
 
     </>
   )
