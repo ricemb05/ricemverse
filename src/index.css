@@ -347,14 +347,36 @@ body {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  animation: scroll 45s infinite;
+  animation: scroll 40s infinite linear;
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+
 
 .footer-carousel.true .footer-carousel-group {
-  animation-direction: reverse;
+  animation: scroll-reverse 40s infinite linear;
 }
 
 
+@keyframes scroll-reverse {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
 
 .footer-carousel-group h1 {
   flex: 0 0 5em;
@@ -400,17 +422,6 @@ body {
   justify-content: center;
   overflow: hidden;
   position: relative;
-}
-
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
 }
 
 
