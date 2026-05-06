@@ -128,7 +128,7 @@ export default function Content() {
                             <span>Profile</span>
 
                             <div className="about-text-p">
-                                <p>An aspiring Web Developer passionate about building clean, responsive, and user-friendly websites. I continuously improve my skills while creating efficient, meaningful digital experiences.</p>
+                                <p>An aspiring Web Developer passionate about building clean, responsive, and user-friendly websites. I continuously improve my skills while creating efficient, meaningful digital experiences that solve real problems and provide value to users.</p>
                             </div>
 
                         </div>
@@ -142,8 +142,7 @@ export default function Content() {
                         <div className="about-text">
                             <span>Planning the Structure</span>
                             <div className="about-text-p">
-                                <p>Before writing any code, I break the idea into smaller, manageable parts and plan a clear structure using a component-based mindset.</p>
-                            </div>
+                                <p>Before writing any code, I break the idea into smaller, manageable parts and plan a clear structure using a component-based mindset, ensuring that each section has a clear purpose and fits well into the overall system.</p>                            </div>
                         </div>
                         <div className="container-number">
                             <span>02</span>
@@ -154,8 +153,7 @@ export default function Content() {
                         <div className="about-text">
                             <span>Designing the Experience</span>
                             <div className="about-text-p">
-                                <p>I think about how the project should feel, making sure the design is smooth, intuitive, and visually clean from the beginning.</p>
-                            </div>
+                                <p>I think about how the project should feel, focusing on user experience from the beginning so the design remains smooth, intuitive, and visually consistent across all devices.</p>                            </div>
                         </div>
                         <div className="container-number">
                             <span>03</span>
@@ -166,7 +164,7 @@ export default function Content() {
                         <div className="about-text">
                             <span>Building the Core</span>
                             <div className="about-text-p">
-                                <p>I prioritize building the core functionality first before adding styles or visual enhancements to ensure everything works properly.</p>
+                                <p>I prioritize building the core functionality first before adding styles or visual enhancements to ensure everything works properly, logically, and is easy to maintain as the project grows.</p>
                             </div>
                         </div>
                         <div className="container-number">
@@ -178,8 +176,7 @@ export default function Content() {
                         <div className="about-text">
                             <span>Refining and Optimizing</span>
                             <div className="about-text-p">
-                                <p>I finish by polishing the project, fixing inconsistencies, improving responsiveness, and optimizing performance for a production-ready result.</p>
-                            </div>
+                                <p>I finish by polishing the project, fixing inconsistencies, improving responsiveness, and optimizing performance for a production-ready result, while also reviewing the code to make sure it stays clean and scalable.</p>                            </div>
                         </div>
                         <div className="container-number">
                             <span>05</span>
