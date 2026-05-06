@@ -347,8 +347,14 @@ body {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  animation: scroll 60s infinite linear;
+  animation: scroll 45s infinite;
 }
+
+.footer-carousel.true .footer-carousel-group {
+  animation-direction: reverse;
+}
+
+
 
 .footer-carousel-group h1 {
   flex: 0 0 5em;
@@ -366,21 +372,6 @@ body {
   margin: 0rem;
 }
 
-
-
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-
-
 /* visible state */
 .footer-carousel.enter-top {
   transform: translateY(0);
@@ -389,6 +380,8 @@ body {
 .footer-carousel.enter-bottom {
   transform: translateY(0);
 }
+
+
 
 .footer-carousel.leave-top {
   transform: translateY(-120px);
@@ -406,9 +399,20 @@ body {
   display: flex;
   justify-content: center;
   overflow: hidden;
-  /* important: clip children */
   position: relative;
 }
+
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 
 
 

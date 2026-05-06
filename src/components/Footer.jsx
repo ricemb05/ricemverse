@@ -6,6 +6,7 @@ export default function Footer() {
     const boxRef = useRef(null);
 
     const [card, setCard] = useState();
+    const [reverse, setReverse] = useState(false);
 
 
 
@@ -16,13 +17,13 @@ export default function Footer() {
         const mouseY = e.clientY - rect.top;
 
         const isTopHalf = mouseY < rect.height / 2;
+            setReverse(!isTopHalf)
 
         if (isTopHalf) {
-
             setCard('enter-top')
         } else {
-
             setCard('enter-bottom')
+
         }
     };
 
@@ -62,10 +63,11 @@ export default function Footer() {
                     onMouseLeave={handleMouseLeave}
                 >
                     <img className="logo" src={RCM} alt="RCM" />
-                    <div className={`footer-carousel ${card}`}
+                    <div className={`footer-carousel ${card} ${reverse}`}
 
                     >
-                        <div className="footer-carousel-group">
+                        <div className="footer-carousel-group"
+                        >
                             <img src={RCM} alt="RCM" />
                             <h2>Built from vision</h2>
                             <img src={RCM} alt="RCM" />
