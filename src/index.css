@@ -314,3 +314,107 @@ body {
 
 
 /* about css ----------------------------> */
+
+
+
+/* Footer css ----------------------------------------> */
+.footer {
+  background: #ebedec;
+}
+
+.footer-logo img {
+  width: 150px;
+}
+
+.footer-carousel {
+  background: #729e85;
+  overflow-x: hidden;
+  display: flex;
+
+  height: 120px;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+
+  transform: translateY(-120px);
+
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+
+.footer-carousel-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  animation: scroll 60s infinite linear;
+}
+
+.footer-carousel-group h1 {
+  flex: 0 0 5em;
+}
+
+.footer-carousel-group img {
+  width: 100px;
+}
+
+.footer-carousel-group h2 {
+  font-size: 5rem;
+  flex: 0 0 35rem;
+  font-family: anton;
+  text-transform: uppercase;
+  margin: 0rem;
+}
+
+
+
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+
+/* visible state */
+.footer-carousel.enter-top {
+  transform: translateY(0);
+}
+
+.footer-carousel.enter-bottom {
+  transform: translateY(0);
+}
+
+.footer-carousel.leave-top {
+  transform: translateY(-120px);
+}
+
+.footer-carousel.leave-bottom {
+  transform: translateY(120px);
+}
+
+.footer-logo .logo {
+  width: 120px;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  /* important: clip children */
+  position: relative;
+}
+
+
+
+
+
+
+
+
+/* Footer css ----------------------------------------> */
