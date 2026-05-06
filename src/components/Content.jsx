@@ -39,14 +39,14 @@ export default function Content() {
                 {
                     scale: scaleValue - 0.05,
                     y: yValue + 100,
-                    filter: "blur(6px)",
+                    filter: "blur(3px)",
                     ease: "none",
                     scrollTrigger: {
                         trigger: el,
-                        start: "top 30%",
-                        end: "bottom 10%",
+                        start: "top 15%",
+                        end: "bottom 3%",
                         scrub: true,
-                        // markers: true,
+                        markers: true,
                     },
                 }
             );

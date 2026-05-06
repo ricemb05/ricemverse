@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from "react";
 export default function Footer() {
     const boxRef = useRef(null);
 
-    const [card, setCard] = useState();
+    const [entry, setEntry] = useState();
     const [reverse, setReverse] = useState(false);
 
 
@@ -20,9 +20,9 @@ export default function Footer() {
             setReverse(!isTopHalf)
 
         if (isTopHalf) {
-            setCard('enter-top')
+            setEntry('enter-top')
         } else {
-            setCard('enter-bottom')
+            setEntry('enter-bottom')
 
         }
     };
@@ -44,15 +44,7 @@ export default function Footer() {
 
     return (
         <>
-            {/* <div
-                className={`card ${card}`}
-                ref={boxRef}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                style={{ height: "150px" }}
-            >
-                Hover me
-            </div> */}
+          
             <div className="footer">
 
                 
@@ -63,7 +55,7 @@ export default function Footer() {
                     onMouseLeave={handleMouseLeave}
                 >
                     <img className="logo" src={RCM} alt="RCM" />
-                    <div className={`footer-carousel ${card} ${reverse}`}
+                    <div className={`footer-carousel ${entry} ${reverse}`}
 
                     >
                         <div className="footer-carousel-group"
