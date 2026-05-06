@@ -33,9 +33,9 @@ export default function Footer() {
         const isTopHalf = mouseY < rect.height / 2;
 
         if (isTopHalf) {
-            setCard('leave-top')
+            setEntry('leave-top')
         } else {
-            setCard('leave-bottom')
+            setEntry('leave-bottom')
         }
     }
 

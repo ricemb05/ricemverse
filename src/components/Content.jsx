@@ -46,7 +46,7 @@ export default function Content() {
                         start: "top 15%",
                         end: "bottom 3%",
                         scrub: true,
-                        markers: true,
+                        // markers: true,
                     },
                 }
             );
