@@ -50,7 +50,7 @@ export default function Content() {
                         start: i==containers.length-1 ? "top 25%" : "top 15%",
                         end: "bottom 3%",
                         scrub: true,
-                        markers: true,
+                        // markers: true,
                     },
                 }
             );
