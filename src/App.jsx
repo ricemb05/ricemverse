@@ -16,12 +16,26 @@ function App() {
 
   return (
     <>
-    
+
       <SmoothScroll />
       <Header />
       <Hero />
       <Content />
+      <div style={{ height: "100vh", backgroundColor: "white" }}>
+        <div className="background-border white">
+          <div className="box"></div>
+          <div className="box"></div>
+          <div className="box"></div>
+          <div className="box"></div>
+          <div className="box"></div>
+          <div className="box"></div>
+          <div className="box"></div>
+          <div className="box"></div>
+          <div className="box"></div>
+        </div>
+      </div>
       <Footer />
+
 
     </>
   )
