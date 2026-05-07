@@ -283,8 +283,9 @@ body {
 }
 
 .container-number span {
-  font-size: 9rem !important;
+  font-size: 20rem !important;
   letter-spacing: 5px;
+  line-height: 1;
 }
 
 .container.green .container-number span {

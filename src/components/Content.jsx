@@ -27,10 +27,13 @@ export default function Content() {
     useLayoutEffect(() => {
         const containers = sectionRef.current.querySelectorAll(".container");
 
-        containers.forEach((el, i) => {
-            const scaleValue = 0.9 + i * 0.05; // 0.8 → 0.85 → 0.9 → 0.95
-            const yValue = 100 - i * 60;        // 100 → 95 → 90 → 85
+        
+        
 
+        containers.forEach((el, i) => {
+            const scaleValue = 0.9 + i * 0.03; // 0.8 → 0.85 → 0.9 → 0.95
+            const yValue = 100 - i * 60;        // 100 → 95 → 90 → 85
+            
             gsap.fromTo(
                 el,
                 {
@@ -44,10 +47,10 @@ export default function Content() {
                     ease: "none",
                     scrollTrigger: {
                         trigger: el,
-                        start: "top 15%",
+                        start: i==containers.length-1 ? "top 25%" : "top 15%",
                         end: "bottom 3%",
                         scrub: true,
-                        // markers: true,
+                        markers: true,
                     },
                 }
             );
@@ -79,12 +82,11 @@ export default function Content() {
         tl.fromTo(
             ".Projects-title",
             {
-                y: 400,
+                y: 300,
             },
             {
                 y: -300,
                 duration: 2,
-                ease: "power3.out",
             }
         )
 
@@ -100,7 +102,7 @@ export default function Content() {
                 xPercent: 20,
                 scale: 3.5,
                 ease: "none",
-                duration: 1,
+                duration: 3,
             }
         )
 
@@ -108,14 +110,14 @@ export default function Content() {
             scale: 15,
             xPercent: 150,
             ease: "none",
-            duration: 1,
+            duration: 3,
         })
 
         .to(".title", {
             scale: 40,
             xPercent: 400,
             ease: "none",
-            duration: 1,
+            duration: 3,
         });
 
     }, Projects);
