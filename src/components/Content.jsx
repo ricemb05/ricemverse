@@ -109,14 +109,14 @@ export default function Content() {
                 },
                 {
                     scale: 3.5,
-                    duration: 2,
+                    duration: 3,
                 }
             )
 
             .to(".title", {
                 scale: 15,
                 x: 2000,
-                duration: 3,
+                duration: 2,
             })
 
             .to(".title", {

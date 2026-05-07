@@ -3,16 +3,15 @@
   font-family: Inter, sans-serif;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   background: #000000;
-  /* background: linear-gradient(45deg, rgba(0, 0, 0, 1) 0%, rgba(21, 9, 28, 1) 59%, rgba(77, 30, 102, 1) 100%); */
   background-color: black;
   color: white;
   margin: 0;
-
-  /* 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); */
 }
 
 /* header css ------------------------------------------>*/
@@ -128,8 +127,6 @@ body {
 }
 
 
-
-
 .hero .hero3js {
   height: 100%;
   inset: 0;
@@ -138,9 +135,6 @@ body {
 }
 
 
-/* .hero .secondSection{
-    width: 50%;
-} */
 /* hero css ------------------------------------------>*/
 
 
@@ -164,10 +158,9 @@ body {
 
 .About {
   position: relative;
-  /* 👈 REQUIRED */
   z-index: 9;
   font-weight: 800;
-
+  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
@@ -182,7 +175,6 @@ body {
   padding-left: 50px;
   padding-right: 50px;
 }
-
 
 
 .About .About-header {
@@ -202,8 +194,6 @@ body {
   margin-block-start: 0;
   margin-block-end: 0;
 }
-
-
 
 
 .about-text p {
@@ -309,9 +299,6 @@ body {
   display: flex;
   justify-content: space-between
 }
-
-
-
 
 
 
@@ -425,11 +412,41 @@ body {
 }
 
 
-
-
-
-
-
-
-
 /* Footer css ----------------------------------------> */
+
+
+
+
+/* projects css ---------------------------------------------> */
+
+
+.Projects-container {
+  z-index: 99;
+  height: 180vh;
+}
+
+.Projects-container .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.Projects-title h1 {
+  font-family: "Anton";
+  text-transform: uppercase;
+  font-size: 15rem;
+  margin: 0;
+}
+
+
+.Projects-title img {
+  width: 15rem;
+}
+
+.background-border.white {
+  background: white;
+}
+
+
+/* projects css ---------------------------------------------> */
