@@ -449,5 +449,9 @@ body {
   background: white;
 }
 
+.background-border.white .box{
+    border-top: 0;
+}
+
 
 /* projects css ---------------------------------------------> */
