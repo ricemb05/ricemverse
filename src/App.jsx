@@ -3,8 +3,9 @@ import Header from "./components/Header"
 import Hero from "./components/Hero"
 import Hero3js from './components/Hero3js'
 import SmoothScroll from './components/SmoothScroll'
-import Content from './components/Content'
+import About from './components/About'
 import Footer from './components/Footer'
+import Projects from './components/Projects'
 
 
 
@@ -20,20 +21,8 @@ function App() {
       <SmoothScroll />
       <Header />
       <Hero />
-      <Content />
-      <div className="test" style={{ height: "100vh", backgroundColor: "white" }}>
-        <div className="background-border white">
-          <div className="box"></div>
-          <div className="box"></div>
-          <div className="box"></div>
-          <div className="box"></div>
-          <div className="box"></div>
-          <div className="box"></div>
-          <div className="box"></div>
-          <div className="box"></div>
-          <div className="box"></div>
-        </div>
-      </div>
+      <About />
+      <Projects/>
       <Footer />
 
 

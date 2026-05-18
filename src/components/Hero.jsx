@@ -57,7 +57,7 @@ export default function Hero() {
 
 
     return (
-        <div className="hero" >
+        <section className="hero" >
             <div className="firstSection" >
                 <span>Turn your</span>
                 <span ref={textRef}></span>
@@ -72,7 +72,7 @@ export default function Hero() {
 
 
 
-        </div>
+        </section>
 
         
 

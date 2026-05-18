@@ -30,7 +30,7 @@ export default function Header() {
 
 
     return (
-        <div className={`header ${hide ? "hide" : ""}`}>
+        <header className={`header ${hide ? "hide" : ""}`}>
             <div className="logo">
                 <img src={RCM} alt="RCM" />
             </div>
@@ -41,6 +41,6 @@ export default function Header() {
                     <button>Let`s talk! </button>
                 </nav>
             </div>
-        </div>
+        </header>
     )
 }

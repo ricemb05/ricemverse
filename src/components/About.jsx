@@ -11,7 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Content() {
+export default function About() {
 
     const tiltRef = useRef(null);
 
@@ -163,7 +163,7 @@ export default function Content() {
         <>
 
 
-            <div className="About" >
+            <section className="About" >
                 <div className="background-border">
                     <div className="box"></div>
                     <div className="box"></div>
@@ -264,7 +264,7 @@ export default function Content() {
 
 
 
-            </div>
+            </section>
 
 
 
