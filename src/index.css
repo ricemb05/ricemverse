@@ -629,7 +629,69 @@ body {
    BUTTON (FIXED)
 ========================= */
 
-.project-technologies button {
+.project-preview {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  height: 400px;
+  /* important: defines fitting container */
+}
+
+.image-pannel {
+  overflow: hidden;
+  /* prevents image overflow */
+}
+
+/* LEFT PANEL (70%) */
+.image-pannel.first {
+  width: 70%;
+}
+
+.image-1 {
+  width: 100%;
+  height: 100%;
+  object-fit: fit;
+  display: block;
+  border-radius: 10px 0px 0px 10px;
+}
+
+/* RIGHT PANEL (30%) */
+.image-pannel.second {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* RIGHT IMAGES (EQUAL SPLIT + FIT) */
+.image-2,
+.image-3 {
+  width: 100%;
+  flex: 1;
+  /* makes both equal height */
+  min-height: 0;
+  /* fixes flex overflow issues */
+  object-fit: fit;
+  display: block;
+}
+
+.image-3{
+  object-fit: cover;
+}
+
+.image-2 {
+  border-radius: 0px 10px 0px 0px;
+}
+
+.image-3 {
+  border-radius: 0px 0px 10px 0px;
+}
+
+.project-technologies a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   padding: 8px 18px;
 
   border-radius: 999px;
@@ -642,19 +704,24 @@ body {
   font-size: 0.9rem;
   font-weight: 400;
 
+  text-decoration: none;
   cursor: pointer;
 
   transition: all 0.25s ease;
 }
 
-.project-technologies button:hover {
+.project-technologies a:hover {
   transform: translateY(-2px);
-  color: white !important;
+
+  color: white;
   background: #2a2a2a;
 
-  box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
+
+
+
+
 
 
 /* projects css ---------------------------------------------> */

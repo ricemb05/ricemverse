@@ -1,0 +1,57 @@
+{
+    "projects": [
+        {
+            "id": 1,
+            "title": "frankstonnetball",
+            "images": {
+                "image": [
+                    "/assets/projects/FDNA-1.png",
+                    "/assets/projects/FDNA-2.png",
+                    "/assets/projects/FDNA-3.png"
+                ],
+                "alts": [
+                    "FDNA Homepage Preview",
+                    "FDNA Footer Preview",
+                    "FDNA Mobile Preview"
+                ]
+            },
+            "description": "Worked as a Frontend Developer, developing key interface sections including the header navigation and multiple page components. Helped establish consistent structure and layout across the application while ensuring clean, maintainable, and scalable implementation.",
+            "techStack": [
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "PHP",
+                "Wordpress",
+                "Elementor"
+            ],
+            "link": "https://frankstonnetball.com.au/"
+        },
+        {
+            "id": 2,
+            "title": "republik",
+            "images": {
+                "image": [
+                    "/assets/projects/republik-1.png",
+                    "/assets/projects/republik-2.png",
+                    "/assets/projects/republik-3.png"
+                ],
+                "alts": [
+                    "republik/terrain Homepage Preview",
+                    "republik/republik Navigation Preview",
+                    "republik/republik Mobile Preview"
+                ]
+            },
+            "description": "Contributed as a Frontend Developer in building a single-page WordPress (Gutenberg) implementation, focusing on structuring content blocks and integrating GSAP animations to enhance interactivity and user engagement. Assisted in refining layout consistency and adapting content for improved readability and multilingual considerations.",
+            "techStack": [
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "PHP",
+                "Wordpress",
+                "GSAP"
+            ],
+            "link": "https://republik.ca/en/terrain/"
+        }
+        
+    ]
+}
