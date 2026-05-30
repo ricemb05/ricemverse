@@ -176,7 +176,7 @@ body {
   align-items: flex-end;
 }
 
-.hero .firstSection .innerSectionCTA {
+.hero .firstSection .heroCTA {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -184,18 +184,18 @@ body {
   z-index: 9999;
 }
 
-.hero .firstSection .innerSectionCTA p {
+.hero .firstSection .heroCTA p {
   color: #ffffff90;
   text-align: right;
   line-height: 1;
 }
 
-.hero .firstSection .innerSectionCTA .CTAbuttons {
+.hero .firstSection .heroCTA .heroCTAlinks {
   display: flex;
   gap: 20px;
 }
 
-.hero .firstSection .innerSectionCTA .CTAbuttons a {
+.hero .firstSection .heroCTA .heroCTAlinks a {
   position: relative;
   display: inline-block;
 
@@ -208,7 +208,7 @@ body {
   cursor: pointer;
 }
 
-.hero .firstSection .innerSectionCTA .CTAbuttons a::after {
+.hero .firstSection .heroCTA .heroCTAlinks a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -223,7 +223,7 @@ body {
   transition: transform 0.3s ease;
 }
 
-.hero .firstSection .innerSectionCTA .CTAbuttons a:hover::after {
+.hero .firstSection .heroCTA .heroCTAlinks a:hover::after {
   transform: scaleX(0);
 }
 

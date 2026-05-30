@@ -118,13 +118,11 @@ export default function Hero() {
                     <span >into <span>REALITY</span></span>
                 </div>
 
-                <div className="innerSectionCTA">
+                <div className="heroCTA">
                     <p>An aspiring Web Developer passionate about building clean, responsive, and user-friendly websites. I continuously improve my skills while creating efficient, meaningful digital experiences that solve real problems and provide value to users.</p>
-                    <div className="CTAbuttons">
+                    <div className="heroCTAlinks">
                         <a href="">Let`s Talk!</a>
                         <a onClick={() => scrollToSection("Projects")} >Work Archive</a>
-
-
                     </div>
 
                 </div>
@@ -160,11 +158,6 @@ export default function Hero() {
                     yGap={36}
                 />
             </div>
-
-
-
-
-
 
         </section>
 
