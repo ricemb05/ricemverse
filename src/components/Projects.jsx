@@ -40,11 +40,11 @@ export default function Projects() {
             tl.fromTo(
                 track,
                 {
-                    clipPath: "inset(50% 0% 50% 0%)",
+                    clipPath: "inset(100% 0% 0% 0%)",
                 },
                 {
                     clipPath: "inset(0% 0% 0% 0%)",
-                    duration: 0.6,
+                    duration: 1,
                     ease: "power3.out"
                 }
             )
@@ -66,7 +66,7 @@ export default function Projects() {
     return (
         <>
 
-            <section className="Projects">
+            <section className="Projects" id="Projects">
 
                 <div className="background-border white" ref={background}>
                     <div className="box"></div>

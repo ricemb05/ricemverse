@@ -287,7 +287,8 @@ void main() {
     return (
         <>
             <Canvas camera={{ position: [0, 2, 20], fov: 70 }}>
-                <VerticalWaveLines />
+                {/* <VerticalWaveLines /> */}
+                
                 <Scene />
 
                 {/* <Axes />

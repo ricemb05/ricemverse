@@ -27,13 +27,13 @@ export default function About() {
     useLayoutEffect(() => {
         const containers = sectionRef.current.querySelectorAll(".container");
 
-        
-        
+
+
 
         containers.forEach((el, i) => {
             const scaleValue = 0.9 + i * 0.03; // 0.8 → 0.85 → 0.9 → 0.95
             const yValue = 100 - i * 60;        // 100 → 95 → 90 → 85
-            
+
             gsap.fromTo(
                 el,
                 {
@@ -47,7 +47,7 @@ export default function About() {
                     ease: "none",
                     scrollTrigger: {
                         trigger: el,
-                        start: i==containers.length-1 ? "top 25%" : "top 15%",
+                        start: i == containers.length - 1 ? "top 25%" : "top 15%",
                         end: "bottom 3%",
                         scrub: true,
                         // markers: true,
@@ -65,65 +65,65 @@ export default function About() {
     const Projects = useRef(null);
 
     useEffect(() => {
-    const ctx = gsap.context(() => {
+        const ctx = gsap.context(() => {
 
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: Projects.current,
-                start: "top 70%",
-                end: "bottom 100%", 
-                scrub: true,
-                pin: true,
-                invalidateOnRefresh: true,
-                // markers: true,
-            },
-        });
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: Projects.current,
+                    start: "top 70%",
+                    end: "bottom 100%",
+                    scrub: true,
+                    pin: true,
+                    invalidateOnRefresh: true,
+                    // markers: true,
+                },
+            });
 
-        tl.fromTo(
-            ".Projects-title",
-            {
-                y: 300,
-            },
-            {
-                y: -300,
-                duration: 2,
-            }
-        )
+            tl.fromTo(
+                ".Projects-title",
+                {
+                    y: 300,
+                },
+                {
+                    y: -300,
+                    duration: 2,
+                }
+            )
 
-        // 2. Main title animation
-        .fromTo(
-            ".title",
-            {
-                scale: 1,
-                xPercent: 0,
-                transformOrigin: "85% center",
-            },
-            {
-                xPercent: 20,
-                scale: 3.5,
-                ease: "none",
-                duration: 3,
-            }
-        )
+                // 2. Main title animation
+                .fromTo(
+                    ".title",
+                    {
+                        scale: 1,
+                        xPercent: 0,
+                        transformOrigin: "85% center",
+                    },
+                    {
+                        xPercent: 20,
+                        scale: 3.5,
+                        ease: "none",
+                        duration: 3,
+                    }
+                )
 
-        .to(".title", {
-            scale: 15,
-            xPercent: 150,
-            ease: "none",
-            duration: 3,
-        })
+                .to(".title", {
+                    scale: 15,
+                    xPercent: 150,
+                    ease: "none",
+                    duration: 3,
+                })
 
-        .to(".title", {
-            scale: 40,
-            xPercent: 400,
-            ease: "none",
-            duration: 3,
-        });
+                .to(".title", {
+                    scale: 40,
+                    xPercent: 400,
+                    ease: "none",
+                    duration: 3,
+                });
 
-    }, Projects);
+        }, Projects);
 
-    return () => ctx.revert();
-}, []);
+        return () => ctx.revert();
+    }, []);
 
 
 
@@ -163,7 +163,7 @@ export default function About() {
         <>
 
 
-            <section className="About" >
+            <section className="About" id="About">
                 <div className="background-border">
                     <div className="box"></div>
                     <div className="box"></div>
@@ -193,24 +193,26 @@ export default function About() {
 
                     <div className="container white">
                         <div className="about-text">
-                            <span>Profile</span>
-
+                            <span>Understanding the Idea</span>
                             <div className="about-text-p">
-                                <p>An aspiring Web Developer passionate about building clean, responsive, and user-friendly websites. I continuously improve my skills while creating efficient, meaningful digital experiences that solve real problems and provide value to users.</p>
+                                <p>
+                                    The project begins with a clear understanding of its goal, purpose, and requirements. This stage focuses on defining direction, identifying core needs, and establishing a strong foundation before any planning or design work starts.
+                                </p>
                             </div>
-
                         </div>
                         <div className="container-number">
                             <span>01</span>
                         </div>
                     </div>
 
-
                     <div className="container green">
                         <div className="about-text">
                             <span>Planning the Structure</span>
                             <div className="about-text-p">
-                                <p>Before writing any code, I break the idea into smaller, manageable parts and plan a clear structure using a component-based mindset, ensuring that each section has a clear purpose and fits well into the overall system.</p>                            </div>
+                                <p>
+                                    The concept is broken down into smaller, manageable parts and organized using a component-based structure. Each section is assigned a clear purpose to ensure consistency and scalability across the system.
+                                </p>
+                            </div>
                         </div>
                         <div className="container-number">
                             <span>02</span>
@@ -221,7 +223,10 @@ export default function About() {
                         <div className="about-text">
                             <span>Designing the Experience</span>
                             <div className="about-text-p">
-                                <p>I think about how the project should feel, focusing on user experience from the beginning so the design remains smooth, intuitive, and visually consistent across all devices.</p>                            </div>
+                                <p>
+                                    User experience is considered early in the process to ensure the interface remains intuitive, smooth, and visually consistent across all devices and screen sizes.
+                                </p>
+                            </div>
                         </div>
                         <div className="container-number">
                             <span>03</span>
@@ -232,7 +237,9 @@ export default function About() {
                         <div className="about-text">
                             <span>Building the Core</span>
                             <div className="about-text-p">
-                                <p>I prioritize building the core functionality first before adding styles or visual enhancements to ensure everything works properly, logically, and is easy to maintain as the project grows.</p>
+                                <p>
+                                    Core functionality is implemented first before visual styling is applied, ensuring that the system is logically sound, stable, and easy to maintain as it scales.
+                                </p>
                             </div>
                         </div>
                         <div className="container-number">
@@ -244,7 +251,10 @@ export default function About() {
                         <div className="about-text">
                             <span>Refining and Optimizing</span>
                             <div className="about-text-p">
-                                <p>I finish by polishing the project, fixing inconsistencies, improving responsiveness, and optimizing performance for a production-ready result, while also reviewing the code to make sure it stays clean and scalable.</p>                            </div>
+                                <p>
+                                    The final stage focuses on refining the product through performance optimization, responsiveness improvements, and code review to ensure a clean and production-ready output.
+                                </p>
+                            </div>
                         </div>
                         <div className="container-number">
                             <span>05</span>
