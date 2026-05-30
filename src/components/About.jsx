@@ -141,9 +141,9 @@ export default function About() {
 
                 {/* rotating text */}
                 <g className="rotate">
-                    <text fontSize="13" fill="white" >
+                    <text fontSize="12.3" fill="white" >
                         <textPath href="#circle">
-                            • Rcm Bts • RCM BTS • Rcm Bts • RCM BTS • Rcm Bts • RCM BTS • Rcm Bts • RCM BTS
+                            • RCMBTNS • RCMBTNS • RCMBTNS • RCMBTNS • RCMBTNS • RCMBTNS
                         </textPath>
                     </text>
                 </g>
@@ -180,7 +180,6 @@ export default function About() {
 
                     <div className="About-header">
                         <div className="about-header-container">
-                            <span>About</span>
                             <h2>A little about me</h2>
                         </div>
 

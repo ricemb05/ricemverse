@@ -14,6 +14,27 @@ body {
   margin: 0;
 }
 
+@font-face {
+  font-family: "Thunder HC 700";
+  src: url("./assets/fonts/Thunder-BoldHC 700.woff2") format("woff2");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Thunder HC 800";
+  src: url("./assets/fonts/Thunder-ExtraBoldHC 800.woff2") format("woff2");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Thunder LC 900";
+  src: url("./assets/fonts/Thunder-BlackLC 900.woff2") format("woff2");
+  font-weight: 900;
+}
+
+
+
+
 /* header css ------------------------------------------>*/
 .header {
   display: flex;
@@ -112,19 +133,27 @@ body {
   font-size: 6rem;
   text-transform: uppercase;
   font-weight: 700;
-  line-height: 0.9;
+  font-family: "Thunder LC 900";
+  line-height: .8;
   z-index: 99
 }
 
 .hero .firstSection span:nth-child(2) {
-  font-family: "Anton", "Inter", sans-serif;
+  color: #729e84;
+  font-family: "Thunder LC 900";
   z-index: 999;
   font-size: 12rem;
 }
 
 .hero .firstSection span:last-child {
   font-size: 5rem;
+  line-height: .3;
+}
 
+.hero .firstSection span:last-child span {
+  text-decoration: underline;
+  text-decoration-color: #729e84;
+  font-family: "Thunder HC 800";
 }
 
 
@@ -138,7 +167,7 @@ body {
 
 .hero .firstSection .innerSection {
   width: 100%;
-  padding: 10px 0;
+  padding: 40px 0;
   border-bottom: 1px solid #ffffff77;
 
   display: flex;

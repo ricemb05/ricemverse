@@ -114,7 +114,7 @@ export default function Hero() {
                 <div className="innerSection">
                     <span>Turn your</span>
                     <span ref={textRef}></span>
-                    <span >into Reality</span>
+                    <span >into <span>REALITY</span></span>
                 </div>
 
                 <div className="innerSectionCTA">

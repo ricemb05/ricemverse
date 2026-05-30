@@ -1,7 +1,7 @@
 import RCM from '../assets/RCM-white.svg'
 import RCM_black from '../assets/RCM-black.svg'
 
-import RCMBTS from '../assets/RCMBTS-white.svg'
+import RICEMBTNS from '../assets/RICEMBTNS-white.svg'
 import { useState, useRef, useEffect } from "react";
 
 
@@ -106,7 +106,7 @@ export default function Footer() {
                 </div>
 
                 <div className="name-svg" >
-                    <img src={RCMBTS} alt="All rights reserverd" />
+                    <img src={RICEMBTNS} alt="All rights reserverd" />
                 </div>
 
             </div>
