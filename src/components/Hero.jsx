@@ -107,6 +107,7 @@ export default function Hero() {
 
 
 
+
     return (
         <section className="hero" >
 
@@ -121,7 +122,7 @@ export default function Hero() {
                     <p>An aspiring Web Developer passionate about building clean, responsive, and user-friendly websites. I continuously improve my skills while creating efficient, meaningful digital experiences that solve real problems and provide value to users.</p>
                     <div className="CTAbuttons">
                         <a href="">Let`s Talk!</a>
-                        <a onClick={() => scrollToSection("Projects")} >Discover Work</a>
+                        <a onClick={() => scrollToSection("Projects")} >Work Archive</a>
 
 
                     </div>
