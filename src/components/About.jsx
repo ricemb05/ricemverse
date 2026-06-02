@@ -183,6 +183,8 @@ export default function About() {
                             <h2>A little about me</h2>
                         </div>
 
+                        
+
                         <div className="circle-wrapper" ref={tiltRef}>
                             <div className="circle" ref={tiltRef} style={{ width: 250, height: 250 }}>
                                 <CircularText />

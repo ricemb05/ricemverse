@@ -117,7 +117,7 @@ export default function Hero() {
                     <span ref={textRef}></span>
                     <span >into <span>REALITY</span></span>
                 </div>
-
+                {/* <div class="square"></div> */}
                 <div className="heroCTA">
                     <p>An aspiring Web Developer passionate about building clean, responsive, and user-friendly websites. I continuously improve my skills while creating efficient, meaningful digital experiences that solve real problems and provide value to users.</p>
                     <div className="heroCTAlinks">

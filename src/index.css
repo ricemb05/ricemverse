@@ -50,6 +50,13 @@ body {
   opacity: 1;
 }
 
+.header .logo {
+  mix-blend-mode: difference;
+  background: transparent;
+  z-index: 2;
+}
+
+
 .header .logo img {
   width: 100px;
   height: 100px;
@@ -59,7 +66,11 @@ body {
   opacity: 0;
 }
 
-.navigation nav {
+.header.hide .navigation button {
+  pointer-events: none;
+}
+
+/* .navigation nav {
   display: flex;
   gap: 20px;
   align-items: center;
@@ -72,7 +83,21 @@ body {
 
 .navigation nav a {
   font-size: 1.125rem;
+} */
+
+.header .navigation .menu-wrap {
+  padding: 120px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
 }
+
+.header .navigation.open .menu-wrap {
+  display: block;
+}
+
+
 
 .navigation nav button {
   padding: 10px 20px;
@@ -104,6 +129,144 @@ body {
   100% {
     background-position: 0% 0%, 300% 50%;
   }
+}
+
+.navigation button {
+  text-transform: uppercase;
+  padding: 16px 24px;
+  border-radius: 20px;
+  background-color: white;
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.navigation button span {
+  transition: transform 0.5s ease-out;
+}
+
+.navigation button:hover span {
+  transform: translateX(-5px);
+}
+
+.navigation .menuIcon {
+  width: 10px;
+  height: 10px;
+  background-color: #729e84;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transform-origin: center;
+  will-change: transform;
+
+  transition: transform 0.5s ease-out;
+}
+
+.navigation .menuIcon .iconLines {
+  transform: translateY(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  transition: transform 0.5s ease;
+}
+
+.navigation .menuIcon .iconLines .line1,
+.navigation .menuIcon .iconLines .line2 {
+  height: 0.5px;
+  width: 10px;
+  background-color: white;
+}
+
+.navigation button:hover .menuIcon {
+  transform: scale(3);
+}
+
+.navigation button:hover .menuIcon .iconLines {
+  transform: translateY(0px);
+}
+
+
+
+
+.navigation button {
+  position: relative;
+  z-index: 9999999;
+  transition: 0.3s ease;
+}
+
+.header .navigation.open button {
+  background: transparent;
+}
+
+.header .navigation.open button span {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: 0.3s ease;
+}
+
+.navigation .iconLines {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  transition: transform 0.3s ease;
+}
+
+.navigation button:hover .iconLines {
+  transform: scale(0.5);
+}
+
+.header .navigation.open .iconLines {
+  transform: scale(0.5);
+}
+
+.navigation .line1,
+.navigation .line2 {
+  position: absolute;
+  left: 0;
+  width: 10px;
+  height: 1px;
+  background-color: white;
+  transform-origin: center;
+  transition: transform 0.4s ease, top 0.4s ease;
+}
+
+.navigation .line1 {
+  top: 3px;
+}
+
+.navigation .line2 {
+  top: 7px;
+}
+
+.header .navigation.open .line1 {
+  top: 5px;
+  transform: rotate(45deg);
+}
+
+.header .navigation.open .line2 {
+  top: 5px;
+  transform: rotate(-45deg);
+}
+
+.header .navigation.open .menuIcon {
+  transform: scale(5);
+}
+
+.header .navigation.open .iconLines {
+  transform: scale(.5) !important;
+  transform: translateY(0px);
+}
+
+.navigation button:hover .iconLines {
+  transform: scale(.5) !important;
 }
 
 /* header css ------------------------------------------>*/
@@ -521,8 +684,8 @@ body {
   width: 100%;
 }
 
-.footer .name-svg{
-    padding: 35px;
+.footer .name-svg {
+  padding: 35px;
 }
 
 .footer .footer-content {

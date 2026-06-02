@@ -17,26 +17,41 @@ export default function Projects() {
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            const panels = gsap.utils.toArray(".panel");
             const track = trackRef.current;
 
-            const distance = (panels.length - 1) * window.innerWidth;
-            background.current.style.height = `${distance + window.innerHeight}px`;
+            const getDistance = () => {
+                return track.scrollWidth - sectionRef.current.clientWidth;
+            };
+
+            const updateBackgroundHeight = () => {
+                const distance = getDistance();
+
+                if (background.current) {
+                    background.current.style.height =
+                        `${distance + window.innerHeight}px`;
+                }
+            };
+
+            updateBackgroundHeight();
 
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: "top top",
-                    end: () => "+=" + distance,
+                    end: () => "+=" + getDistance(),
                     scrub: 1,
                     pin: true,
                     anticipatePin: 1,
+                    invalidateOnRefresh: true,
+
+                    onRefresh: () => {
+                        updateBackgroundHeight();
+                    },
 
                     // markers: true,
                 }
             });
 
-            // Phase 1: entrance (small portion of scroll)
             tl.fromTo(
                 track,
                 {
@@ -48,16 +63,21 @@ export default function Projects() {
                     ease: "power3.out"
                 }
             )
+                .to(track, {
+                    x: () => -getDistance(),
+                    ease: "none",
+                    duration: 0.85
+                });
 
-                // Phase 2: horizontal scroll (main part)
-                .to(
-                    track,
-                    {
-                        x: -distance,
-                        ease: "none",
-                        duration: 0.85
-                    }
-                );
+            const handleResize = () => {
+                ScrollTrigger.refresh();
+            };
+
+            window.addEventListener("resize", handleResize);
+
+            return () => {
+                window.removeEventListener("resize", handleResize);
+            };
         }, sectionRef);
 
         return () => ctx.revert();
