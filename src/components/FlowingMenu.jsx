@@ -13,7 +13,6 @@ function FlowingMenu({
   borderColor,
   isOpen,
 }) {
-
   return (
     <div
       className={`menu-wrap ${isOpen ? "" : "hidden"}`}
@@ -43,7 +42,6 @@ function MenuItem({
   text,
   index,
   description,
-  image,
   speed,
   textColor,
   marqueeBgColor,
@@ -51,53 +49,87 @@ function MenuItem({
   borderColor,
   isOpen,
 }) {
-  const itemRef = useRef(null);
+  // ✅ SINGLE REF (replaces itemRef + boxref)
+  const boxRef = useRef(null);
+
   const marqueeRef = useRef(null);
   const marqueeInnerRef = useRef(null);
   const animationRef = useRef(null);
+  const textRef = useRef(null);
 
   const [repetitions, setRepetitions] = useState(6);
 
   const animationDefaults = { duration: 0.6, ease: "expo" };
 
   // ---------------------------------------------------
-  // REPEATS (safe visual filler only)
+  // REPEATS
   // ---------------------------------------------------
   useEffect(() => {
     if (!isOpen) return;
-
-    setRepetitions(6); // fixed stable value (NO bugs, NO overflow)
+    setRepetitions(6);
   }, [isOpen]);
 
   // ---------------------------------------------------
-  // GSAP MARQUEE (FIXED BIDIRECTIONAL)
+  // CONTAINER + TEXT ANIMATION
   // ---------------------------------------------------
   useEffect(() => {
+    if (!boxRef.current || !textRef.current) return;
+
+    gsap.killTweensOf([boxRef.current, textRef.current]);
+
+    gsap.set(boxRef.current, {
+      scaleX: 0,
+      transformOrigin: "center",
+    });
+
+    gsap.set(textRef.current, {
+      yPercent: 120,
+    });
+
     if (!isOpen) return;
-    if (!marqueeInnerRef.current) return;
+
+    const tl = gsap.timeline();
+
+    tl.to(boxRef.current, {
+      scaleX: 1,
+      duration: 0.9,
+      ease: "power3.out",
+      delay: 0.8 + index * 0.15,
+    });
+
+    tl.to(
+      textRef.current,
+      {
+        yPercent: 0,
+        duration: 1.2,
+        ease: "power3.out",
+      },
+      "-=0.4"
+    );
+  }, [isOpen, index]);
+
+  // ---------------------------------------------------
+  // MARQUEE LOOP (FIXED WIDTH)
+  // ---------------------------------------------------
+  useEffect(() => {
+    if (!isOpen || !marqueeInnerRef.current) return;
 
     const setupMarquee = () => {
-      const marqueeContent =
-        marqueeInnerRef.current.querySelector(".marquee__part");
+      const el = marqueeInnerRef.current;
 
-      if (!marqueeContent) return;
-
-      const contentWidth = marqueeContent.getBoundingClientRect().width;
-      if (!contentWidth) return;
+      const totalWidth = el.scrollWidth / 2;
+      if (!totalWidth) return;
 
       animationRef.current?.kill();
 
       const direction = index % 2 === 0 ? -1 : 1;
 
-      // 🔥 KEY FIX: correct start position
-      const startX = direction === -1 ? 0 : -contentWidth;
-      const endX = direction === -1 ? -contentWidth : 0;
+      const startX = direction === -1 ? 0 : -totalWidth;
+      const endX = direction === -1 ? -totalWidth : 0;
 
-      gsap.set(marqueeInnerRef.current, {
-        x: startX,
-      });
+      gsap.set(el, { x: startX });
 
-      animationRef.current = gsap.to(marqueeInnerRef.current, {
+      animationRef.current = gsap.to(el, {
         x: endX,
         duration: speed,
         ease: "none",
@@ -105,22 +137,24 @@ function MenuItem({
       });
     };
 
-    const timer = setTimeout(setupMarquee, 100);
+    const timer = setTimeout(() => {
+      requestAnimationFrame(setupMarquee);
+    }, 100);
 
     return () => {
       clearTimeout(timer);
       animationRef.current?.kill();
     };
-  }, [isOpen, speed, index, text, image]);
+  }, [isOpen, speed, index]);
 
   // ---------------------------------------------------
-  // HOVER ANIMATIONS (UNCHANGED)
+  // HOVER ENTER
   // ---------------------------------------------------
   const handleMouseEnter = (ev) => {
-    if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current)
+    if (!boxRef.current || !marqueeRef.current || !marqueeInnerRef.current)
       return;
 
-    const rect = itemRef.current.getBoundingClientRect();
+    const rect = boxRef.current.getBoundingClientRect();
     const x = ev.clientX - rect.left;
     const y = ev.clientY - rect.top;
 
@@ -142,11 +176,14 @@ function MenuItem({
       });
   };
 
+  // ---------------------------------------------------
+  // HOVER LEAVE
+  // ---------------------------------------------------
   const handleMouseLeave = (ev) => {
-    if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current)
+    if (!boxRef.current || !marqueeRef.current || !marqueeInnerRef.current)
       return;
 
-    const rect = itemRef.current.getBoundingClientRect();
+    const rect = boxRef.current.getBoundingClientRect();
     const x = ev.clientX - rect.left;
     const y = ev.clientY - rect.top;
 
@@ -165,59 +202,13 @@ function MenuItem({
       });
   };
 
-
-  const textRef = useRef(null);
-  const boxref = useRef(null);
-
-  useEffect(() => {
-    if (!boxref.current || !textRef.current) return;
-
-    // kill previous animations
-    gsap.killTweensOf([boxref.current, textRef.current]);
-
-    // reset states first
-    gsap.set(boxref.current, {
-      scaleX: 0,
-      transformOrigin: "center",
-    });
-
-    gsap.set(textRef.current, {
-      yPercent: 120,
-    });
-
-    // if closed → stop here
-    if (!isOpen) return;
-
-    const tl = gsap.timeline();
-
-    // 1. container opens from center
-    tl.to(boxref.current, {
-      scaleX: 1,
-      duration: 0.9,
-      ease: "power3.out",
-      delay: .8 + index * 0.15,
-    });
-
-    // 2. text slides in
-    tl.to(
-      textRef.current,
-      {
-        yPercent: 0,
-        duration: 1.2,
-        ease: "power3.out",
-      },
-      "-=0.4"
-    );
-  }, [isOpen, index]);
-
-
   // ---------------------------------------------------
   // RENDER
   // ---------------------------------------------------
   return (
     <div
       className="menu__item"
-      ref={boxref}
+      ref={boxRef}
       style={{
         borderColor,
         transformOrigin: "center",

@@ -99,34 +99,34 @@
 
 
 
-.menu__item-link{
-    font-family: "Thunder LC 900";
-    font-size: 13rem;
-    margin-top: 2rem;
-    line-height: .75;
+.menu__item-link {
+  width: 100%;
+  font-family: "Thunder LC 900";
+  font-size: 13rem;
+  margin-top: 2rem;
+  line-height: .75;
 }
 
-.marquee .marquee__part span{
-    font-family: "Thunder LC 900";
-    font-size: 13rem;
-    margin-top: 3rem;
-    line-height: .75;
+.marquee .marquee__part span {
+  font-family: "Thunder LC 900";
+  font-size: 13rem;
+  margin-top: 3rem;
+  line-height: .75;
 }
 
-.marquee .marquee__part .ArrowCircle{
-    padding: 20px;
-    border-radius: 50%;
-    background-color: rgb(95,95,95);
+.marquee .marquee__part .ArrowCircle {
+  padding: 20px;
+  border-radius: 50%;
+  background-color: rgb(95, 95, 95);
 }
 
 
-.menu{
-    height: auto;
-}
-
-.menu__item {
-  flex: none;       /* IMPORTANT */
+.menu {
   height: auto;
 }
 
-
+.menu__item {
+  flex: none;
+  /* IMPORTANT */
+  height: auto;
+}
