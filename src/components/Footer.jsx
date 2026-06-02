@@ -4,6 +4,8 @@ import RCM_black from '../assets/RCM-black.svg'
 import RICEMBTNS from '../assets/RICEMBTNS-white.svg'
 import { useState, useRef, useEffect } from "react";
 
+import Overlay from './Overlay';
+
 
 export default function Footer() {
     const boxRef = useRef(null);
@@ -43,12 +45,19 @@ export default function Footer() {
     }
 
 
+    const [id, setId] = useState();
+    const [triggerScroll, setTriggerScroll] = useState(false);
+
+    const handleClick = (targetId) => {
+        setId(targetId);
+        setTriggerScroll(true);
+    };
 
 
     return (
         <>
 
-            <div className="footer">
+            <footer className="footer">
 
                 <div className="footer-logo"
                     onMouseEnter={handleMouseEnter}
@@ -88,16 +97,18 @@ export default function Footer() {
 
                 <div className="footer-content">
                     <div className="footer-contact">
-                        <span>ricembotones05@gmail.com</span>
-                        <span>linkedin</span>
-                        <span>github</span>
+                        <a href="mailto:ricembotones05@gmail.com">ricembotones05@gmail.com</a>
+                        <a href="https://www.linkedin.com/in/ricem-mernen-p-botones-a578482b8" target="_blank"
+                            rel="noopener noreferrer">linkedin</a>
+                        <a href="https://github.com/ricemb05/" target="_blank"
+                            rel="noopener noreferrer">github</a>
                     </div>
                     <div className="footer-nav">
-                        <a href="#About">Overview</a>
-                        <a href="#Projects">Projects</a>
+                        <a onClick={() => handleClick("About")} >Overview</a>
+                        <a onClick={() => handleClick("Projects")} >Projects</a>
                         <span>Contacts</span>
                     </div>
-                    
+
                     <div className="footer-credits">
                         <span>©2026 All Rights Reserved</span>
                     </div>
@@ -109,7 +120,10 @@ export default function Footer() {
                     <img src={RICEMBTNS} alt="All rights reserverd" />
                 </div>
 
-            </div>
+                <Overlay id={id} trigger={triggerScroll} setTrigger={setTriggerScroll} />
+
+
+            </footer>
 
 
         </>

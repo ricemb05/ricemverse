@@ -4,7 +4,8 @@ import FlowingMenu from "./FlowingMenu";
 import gsap from 'gsap'
 
 
-export default function Header() {
+
+export default function Header({ handleScroll }) {
     const [hide, setHide] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const ignoreScroll = useRef(false);
@@ -96,7 +97,7 @@ export default function Header() {
     // 🧠 SAFE ITEMS (prevents FlowingMenu crash)
     const demoItems = [
         { link: "#", text: "Overview", description: "A little About Me", image: "https://picsum.photos/600/400?random=1" },
-        { link: "#Projects", text: "Projects", description: "Explore my Works", image: "https://picsum.photos/600/400?random=2" },
+        { link: "Projects", text: "Projects", description: "Explore my Works", image: "https://picsum.photos/600/400?random=2" },
         { link: "#", text: "Contact", description: "Let`s Talk", image: "https://picsum.photos/600/400?random=3" }
     ];
 

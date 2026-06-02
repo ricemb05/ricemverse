@@ -1,10 +1,11 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Hero3js from "./Hero3js";
 import Waves from "./Waves"
 import Projects from "./Projects";
+import Overlay from "./Overlay"
 
 
 
@@ -106,6 +107,13 @@ export default function Hero() {
     };
 
 
+    const [id, setId] = useState();
+    const [triggerScroll, setTriggerScroll] = useState(false);
+
+    const handleClick = (targetId) => {
+        setId(targetId);
+        setTriggerScroll(true);
+    };
 
 
     return (
@@ -122,7 +130,7 @@ export default function Hero() {
                     <p>An aspiring Web Developer passionate about building clean, responsive, and user-friendly websites. I continuously improve my skills while creating efficient, meaningful digital experiences that solve real problems and provide value to users.</p>
                     <div className="heroCTAlinks">
                         <a href="">Let`s Talk!</a>
-                        <a onClick={() => scrollToSection("Projects")} >Work Archive</a>
+                        <a onClick={() => handleClick("Projects")} >Work Archive</a>
                     </div>
 
                 </div>
@@ -143,21 +151,7 @@ export default function Hero() {
             <div className='hero3js'>
                 <Hero3js />
             </div>
-            <div className="overlay" ref={overlayRef}>
-                <Waves
-                    lineColor="black"
-                    backgroundColor="#ffffff"
-                    waveSpeedX={0.0125}
-                    waveSpeedY={0.01}
-                    waveAmpX={40}
-                    waveAmpY={20}
-                    friction={0.9}
-                    tension={0.01}
-                    maxCursorMove={120}
-                    xGap={12}
-                    yGap={36}
-                />
-            </div>
+            <Overlay id={id} trigger={triggerScroll} setTrigger={setTriggerScroll} />
 
         </section>
 

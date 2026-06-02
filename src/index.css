@@ -390,7 +390,7 @@ body {
   transform: scaleX(0);
 }
 
-.hero .overlay {
+.overlay {
   position: fixed;
   inset: 0;
   z-index: 99999999;
@@ -707,6 +707,10 @@ body {
   font-size: 18px;
 }
 
+.footer-nav {
+  cursor: pointer;
+}
+
 
 .footer-contact,
 .footer-credits {
@@ -720,22 +724,25 @@ body {
 }
 
 
-.footer-nav a {
+
+.footer-nav a, .footer-contact a {
   color: white;
   position: relative;
   text-decoration: none;
   display: inline-block;
   padding-bottom: 4px;
+  width: fit-content; /* 👈 key fix */
 }
 
-.footer-nav a::after {
+/* underline */
+.footer-nav a::after, .footer-contact a::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
 
-  width: 100%;
   height: 1px;
+  width: 100%; /* now follows text width because of fit-content */
 
   background: white;
 
@@ -744,7 +751,8 @@ body {
   transition: transform 0.3s ease;
 }
 
-.footer-nav a:hover::after {
+/* hover */
+.footer-nav a:hover::after, .footer-contact a:hover::after {
   transform: scaleX(0);
 }
 

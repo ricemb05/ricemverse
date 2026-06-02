@@ -12,6 +12,7 @@ function FlowingMenu({
   marqueeTextColor,
   borderColor,
   isOpen,
+  handleScroll
 }) {
   return (
     <div
@@ -48,6 +49,7 @@ function MenuItem({
   marqueeTextColor,
   borderColor,
   isOpen,
+  handleScroll
 }) {
   // ✅ SINGLE REF (replaces itemRef + boxref)
   const boxRef = useRef(null);
@@ -220,6 +222,10 @@ function MenuItem({
         href={link}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onClick={(e) => {
+          e.preventDefault();
+          handleScroll?.(link); // 👈 uses parent system
+        }}
         style={{ color: textColor, display: "inline-block" }}
       >
         {text}
