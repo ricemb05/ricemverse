@@ -64,18 +64,90 @@ export default function About() {
 
     const Projects = useRef(null);
 
+    // useEffect(() => {
+    //     const ctx = gsap.context(() => {
+
+    //         const tl = gsap.timeline({
+    //             scrollTrigger: {
+    //                 trigger: Projects.current,
+    //                 start: "top 70%",
+    //                 end: "bottom 100%",
+    //                 scrub: true,
+    //                 pin: true,
+    //                 invalidateOnRefresh: true,
+    //                 // markers: true,
+    //             },
+    //         });
+
+    //         tl.fromTo(
+    //             ".Projects-title",
+    //             {
+    //                 y: 300,
+    //             },
+    //             {
+    //                 y: -300,
+    //                 duration: 2,
+    //             }
+    //         )
+
+    //             // 2. Main title animation
+    //             .fromTo(
+    //                 ".title",
+    //                 {
+    //                     scale: 1,
+    //                     xPercent: 0,
+    //                     transformOrigin: "85% center",
+    //                 },
+    //                 {
+    //                     xPercent: 20,
+    //                     scale: 3.5,
+    //                     ease: "none",
+    //                     duration: 3,
+    //                 }
+    //             )
+
+    //             .to(".title", {
+    //                 scale: 15,
+    //                 xPercent: 150,
+    //                 ease: "none",
+    //                 duration: 3,
+    //             })
+
+    //             .to(".title", {
+    //                 scale: 40,
+    //                 xPercent: 400,
+    //                 ease: "none",
+    //                 duration: 3,
+    //             });
+
+    //     }, Projects);
+
+    //     return () => ctx.revert();
+    // }, []);
     useEffect(() => {
+        const getXPercent = () => {
+            const w = window.innerWidth;
+
+            if (w <= 768) return 7;   // mobile (needs more space)
+            if (w <= 1024) return 3.5;
+            if (w <= 1366) return -5;
+            if (w <= 1440) return 5;  // tablet
+            return 20;                // desktop (your original)
+        };
+
         const ctx = gsap.context(() => {
+
+            const w = window.innerWidth;
 
             const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: Projects.current,
-                    start: "top 70%",
+                    start: `${w <= 500 ? "top 90%" : "top 70%"}`,
                     end: "bottom 100%",
                     scrub: true,
                     pin: true,
                     invalidateOnRefresh: true,
-                    // markers: true,
+                    markers: true,
                 },
             });
 
@@ -99,7 +171,7 @@ export default function About() {
                         transformOrigin: "85% center",
                     },
                     {
-                        xPercent: 20,
+                        xPercent: getXPercent(),
                         scale: 3.5,
                         ease: "none",
                         duration: 3,
@@ -108,14 +180,14 @@ export default function About() {
 
                 .to(".title", {
                     scale: 15,
-                    xPercent: 150,
+                    xPercent: getXPercent() * 6, // keeps proportional movement
                     ease: "none",
                     duration: 3,
                 })
 
                 .to(".title", {
                     scale: 40,
-                    xPercent: 400,
+                    xPercent: getXPercent() * 20,
                     ease: "none",
                     duration: 3,
                 });
@@ -124,7 +196,6 @@ export default function About() {
 
         return () => ctx.revert();
     }, []);
-
 
 
 
@@ -183,7 +254,7 @@ export default function About() {
                             <h2>A little about me</h2>
                         </div>
 
-                        
+
 
                         <div className="circle-wrapper" ref={tiltRef}>
                             <div className="circle" ref={tiltRef} style={{ width: 250, height: 250 }}>

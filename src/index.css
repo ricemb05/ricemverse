@@ -725,24 +725,28 @@ body {
 
 
 
-.footer-nav a, .footer-contact a {
+.footer-nav a,
+.footer-contact a {
   color: white;
   position: relative;
   text-decoration: none;
   display: inline-block;
   padding-bottom: 4px;
-  width: fit-content; /* 👈 key fix */
+  width: fit-content;
+  /* 👈 key fix */
 }
 
 /* underline */
-.footer-nav a::after, .footer-contact a::after {
+.footer-nav a::after,
+.footer-contact a::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
 
   height: 1px;
-  width: 100%; /* now follows text width because of fit-content */
+  width: 100%;
+  /* now follows text width because of fit-content */
 
   background: white;
 
@@ -752,7 +756,8 @@ body {
 }
 
 /* hover */
-.footer-nav a:hover::after, .footer-contact a:hover::after {
+.footer-nav a:hover::after,
+.footer-contact a:hover::after {
   transform: scaleX(0);
 }
 
@@ -1066,3 +1071,230 @@ body {
 
 
 /* projects css ---------------------------------------------> */
+
+
+
+
+
+
+/* MEDIA QUERY ----------------------------------------------> */
+
+/* HEADER RESPONSIVENESS */
+@media(max-width: 768px) {
+  .header {
+    padding: 15px 20px;
+  }
+
+  .menu__item-link,
+  .marquee .marquee__part span {
+    font-size: 10rem;
+  }
+
+}
+
+@media(max-width: 500px) {
+  .header {
+    padding: 10px;
+  }
+
+  .menu__item-link,
+  .marquee .marquee__part span {
+    font-size: 7rem;
+  }
+}
+
+/* HEADER RESPONSIVENESS */
+
+
+/* HERO RESPONSIVENESS */
+@media(max-width: 1366px) {
+  .hero .firstSection span {
+    font-size: 4rem;
+  }
+
+  .hero .firstSection span:nth-child(2) {
+    font-size: 10rem;
+    line-height: .85;
+  }
+
+  .hero .firstSection span:last-child {
+    font-size: 3.5rem;
+    line-height: 0;
+  }
+
+  .hero .firstSection .heroCTA {
+    width: 80%;
+  }
+}
+
+
+@media(max-width: 1024px) {
+  .hero .firstSection {
+    width: 100%;
+    align-items: center;
+  }
+
+  .hero .firstSection .innerSection {
+    align-items: center;
+  }
+
+  .hero .firstSection .heroCTA {
+    width: 100%;
+    align-items: center;
+  }
+
+  .hero .firstSection .heroCTA p {
+    text-align: center;
+  }
+}
+
+@media(max-width: 500px) {
+  .hero .firstSection span:nth-child(2) {
+    font-size: 6rem;
+    line-height: .85;
+  }
+
+  .hero .firstSection span:last-child {
+    line-height: .5
+  }
+}
+
+/* HERO RESPONSIVENESS */
+
+/* ABOUT RESPONSIVNESS */
+@media(max-width: 1440px) {
+
+  .container.white span,
+  .container.green span {
+    font-size: 4rem;
+  }
+
+  .container-number span {
+    font-size: 15rem !important;
+  }
+}
+
+@media(max-width: 1366px) {
+
+  .container.white span,
+  .container.green span {
+    font-size: 3.8rem;
+  }
+}
+
+
+@media(max-width: 1024px) {
+  .about-text {
+    width: 70%;
+  }
+
+  .container-number {
+    width: 30%;
+  }
+
+  .container.white span,
+  .container.green span {
+    font-size: 2.8rem;
+  }
+
+  .container-number span {
+    font-size: 10rem !important;
+  }
+
+  .Projects-title h1 {
+    font-size: 10rem;
+  }
+
+  .Projects-title img {
+    width: 10rem;
+  }
+}
+
+@media(max-width: 768px) {
+
+  .container.white span,
+  .container.green span {
+    font-size: 2rem;
+  }
+
+  .container-number span {
+    font-size: 8rem !important;
+  }
+
+  .Projects-title h1 {
+    font-size: 7rem;
+  }
+
+  .Projects-title img {
+    width: 7rem;
+  }
+}
+
+
+@media(max-width:500px) {
+  .About-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .about-header-container h2 {
+    font-size: 2rem;
+  }
+
+  .About-header .circle-wrapper .circle {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  .About-header .circle-wrapper .circle svg {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  .about-text {
+    width: 70%;
+  }
+
+  .container-number {
+    width: 30%;
+  }
+
+  .container.white,
+  .container.green {
+    padding: 5px;
+  }
+
+  .container.white span,
+  .container.green span {
+    font-size: 1.4rem;
+  }
+
+  .container-number span {
+    font-size: 4rem !important;
+  }
+
+  .about-text p {
+    font-size: 16px;
+    text-align: left;
+    line-height: 1
+  }
+
+  .Projects-title .title {
+    gap: 10px;
+  }
+
+  .Projects-title h1 {
+    font-size: 5rem;
+  }
+
+  .Projects-title img {
+    width: 5rem;
+  }
+
+
+}
+
+/* ABOUT RESPONSIVNESS */
+
+
+/* MEDIA QUERY ----------------------------------------------> */

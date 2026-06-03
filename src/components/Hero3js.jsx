@@ -281,14 +281,44 @@ void main() {
     }
 
 
+    function ResponsiveCamera() {
+        const { camera, size, gl, scene } = useThree();
 
+        useEffect(() => {
+            function update() {
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+
+                // adjust camera distance for mobile
+                if (width <= 768) {
+                    camera.position.set(0, 2, 30); // push camera back on mobile
+                } else if (width <= 1024) {
+                    camera.position.set(0, 2, 25);
+                } else {
+                    camera.position.set(0, 2, 20);
+                }
+
+                camera.fov = width < 768 ? 75 : 70;
+                camera.updateProjectionMatrix();
+
+                gl.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            }
+
+            update();
+            window.addEventListener("resize", update);
+
+            return () => window.removeEventListener("resize", update);
+        }, [camera, gl]);
+
+        return null;
+    }
 
 
     return (
         <>
             <Canvas camera={{ position: [0, 2, 20], fov: 70 }}>
                 {/* <VerticalWaveLines /> */}
-                
+                <ResponsiveCamera />
                 <Scene />
 
                 {/* <Axes />

@@ -11,42 +11,42 @@ export default function Header({ handleScroll }) {
     const ignoreScroll = useRef(false);
 
     // 🔒 scroll hide header
-    useEffect(() => {
-        let lastScroll = window.scrollY;
+    // useEffect(() => {
+    //     let lastScroll = window.scrollY;
 
-        const handleScroll = () => {
-            if (ignoreScroll.current) return;
+    //     const handleScroll = () => {
+    //         if (ignoreScroll.current) return;
 
-            const currentScroll = window.scrollY;
+    //         const currentScroll = window.scrollY;
 
-            if (currentScroll > lastScroll && currentScroll > 50) {
-                setHide(true);
-            } else {
-                setHide(false);
-            }
+    //         if (currentScroll > lastScroll && currentScroll > 50) {
+    //             setHide(true);
+    //         } else {
+    //             setHide(false);
+    //         }
 
-            lastScroll = currentScroll;
-        };
+    //         lastScroll = currentScroll;
+    //     };
 
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    //     window.addEventListener("scroll", handleScroll);
+    //     return () => window.removeEventListener("scroll", handleScroll);
+    // }, []);
 
     // 🔒 toggle menu
-    function openMenu() {
+    function openMenu(nexState) {
         if (menuOpen) {
             gsap.to(menuWrapRef.current, {
                 y: "-100%",
                 duration: 1.3,
                 ease: "power3.in",
                 onComplete: () => {
+                    console.log("animation play")
                     setMenuOpen(false);
+
                 }
             });
         } else {
             setMenuOpen(true);
-
-            // 👇 IMPORTANT: force correct start BEFORE animating
             gsap.set(menuWrapRef.current, {
                 y: "100%"
             });
@@ -58,31 +58,29 @@ export default function Header({ handleScroll }) {
             });
         }
     }
+    // useEffect(() => {
+    //     if (menuOpen) {
+    //         const scrollY = window.scrollY;
 
-    // 🔒 lock scroll when menu is open
-    useEffect(() => {
-        if (menuOpen) {
-            const scrollY = window.scrollY;
+    //         document.body.style.position = "fixed";
+    //         document.body.style.top = `-${scrollY}px`;
+    //         document.body.style.left = "0";
+    //         document.body.style.right = "0";
+    //         document.body.style.width = "100%";
 
-            document.body.style.position = "fixed";
-            document.body.style.top = `-${scrollY}px`;
-            document.body.style.left = "0";
-            document.body.style.right = "0";
-            document.body.style.width = "100%";
+    //         document.body.dataset.scrollY = scrollY;
+    //     } else {
+    //         const scrollY = parseInt(document.body.dataset.scrollY || "0");
 
-            document.body.dataset.scrollY = scrollY;
-        } else {
-            const scrollY = parseInt(document.body.dataset.scrollY || "0");
+    //         document.body.style.position = "";
+    //         document.body.style.top = "";
+    //         document.body.style.left = "";
+    //         document.body.style.right = "";
+    //         document.body.style.width = "";
 
-            document.body.style.position = "";
-            document.body.style.top = "";
-            document.body.style.left = "";
-            document.body.style.right = "";
-            document.body.style.width = "";
-
-            window.scrollTo(0, scrollY);
-        }
-    }, [menuOpen]);
+    //         window.scrollTo(0, scrollY);
+    //     }
+    // }, [menuOpen]);
 
     useEffect(() => {
         ignoreScroll.current = true;
@@ -94,9 +92,8 @@ export default function Header({ handleScroll }) {
         return () => clearTimeout(timer);
     }, [menuOpen]);
 
-    // 🧠 SAFE ITEMS (prevents FlowingMenu crash)
     const demoItems = [
-        { link: "#", text: "Overview", description: "A little About Me", image: "https://picsum.photos/600/400?random=1" },
+        { link: "About", text: "Overview", description: "A little About Me", image: "https://picsum.photos/600/400?random=1" },
         { link: "Projects", text: "Projects", description: "Explore my Works", image: "https://picsum.photos/600/400?random=2" },
         { link: "#", text: "Contact", description: "Let`s Talk", image: "https://picsum.photos/600/400?random=3" }
     ];
@@ -151,6 +148,7 @@ export default function Header({ handleScroll }) {
                         marqueeTextColor="white"
                         borderColor="rgb(26, 26, 26)"
                         isOpen={menuOpen}
+                        onToggleMenu={openMenu}
                     />
                 </div>
             </div>

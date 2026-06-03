@@ -11,8 +11,8 @@ function FlowingMenu({
   marqueeBgColor,
   marqueeTextColor,
   borderColor,
-  isOpen,
-  handleScroll
+  onToggleMenu,
+  isOpen
 }) {
   return (
     <div
@@ -31,6 +31,7 @@ function FlowingMenu({
             marqueeTextColor={marqueeTextColor}
             borderColor={borderColor}
             isOpen={isOpen}
+            onToggleMenu={onToggleMenu}
           />
         ))}
       </nav>
@@ -48,37 +49,47 @@ function MenuItem({
   marqueeBgColor,
   marqueeTextColor,
   borderColor,
-  isOpen,
-  handleScroll
+  onToggleMenu,
+  isOpen
 }) {
-  // ✅ SINGLE REF (replaces itemRef + boxref)
   const boxRef = useRef(null);
-
   const marqueeRef = useRef(null);
   const marqueeInnerRef = useRef(null);
-  const animationRef = useRef(null);
   const textRef = useRef(null);
+  const animationRef = useRef(null);
 
   const [repetitions, setRepetitions] = useState(6);
 
-  const animationDefaults = { duration: 0.6, ease: "expo" };
+  const animationDefaults = { duration: 0.6, ease: "expo.out" };
 
   // ---------------------------------------------------
-  // REPEATS
-  // ---------------------------------------------------
-  useEffect(() => {
-    if (!isOpen) return;
-    setRepetitions(6);
-  }, [isOpen]);
-
-  // ---------------------------------------------------
-  // CONTAINER + TEXT ANIMATION
+  // OPEN / CLOSE EXIT ANIMATION (FIXED)
   // ---------------------------------------------------
   useEffect(() => {
     if (!boxRef.current || !textRef.current) return;
 
     gsap.killTweensOf([boxRef.current, textRef.current]);
 
+    if (!isOpen) {
+      // EXIT animation
+      gsap.to(boxRef.current, {
+        scaleX: 0,
+        duration: 0.6,
+        ease: "power3.in",
+        delay: index * 0.05,
+      });
+
+      gsap.to(textRef.current, {
+        yPercent: 120,
+        duration: 0.6,
+        ease: "power3.in",
+        delay: index * 0.05,
+      });
+
+      return;
+    }
+
+    // OPEN animation
     gsap.set(boxRef.current, {
       scaleX: 0,
       transformOrigin: "center",
@@ -88,8 +99,6 @@ function MenuItem({
       yPercent: 120,
     });
 
-    if (!isOpen) return;
-
     const tl = gsap.timeline();
 
     tl.to(boxRef.current, {
@@ -97,9 +106,7 @@ function MenuItem({
       duration: 0.9,
       ease: "power3.out",
       delay: 0.8 + index * 0.15,
-    });
-
-    tl.to(
+    }).to(
       textRef.current,
       {
         yPercent: 0,
@@ -111,23 +118,23 @@ function MenuItem({
   }, [isOpen, index]);
 
   // ---------------------------------------------------
-  // MARQUEE LOOP (FIXED WIDTH)
+  // MARQUEE LOOP
   // ---------------------------------------------------
   useEffect(() => {
     if (!isOpen || !marqueeInnerRef.current) return;
 
-    const setupMarquee = () => {
-      const el = marqueeInnerRef.current;
+    const el = marqueeInnerRef.current;
 
-      const totalWidth = el.scrollWidth / 2;
-      if (!totalWidth) return;
+    const setup = () => {
+      const width = el.scrollWidth / 2;
+      if (!width) return;
 
       animationRef.current?.kill();
 
-      const direction = index % 2 === 0 ? -1 : 1;
+      const dir = index % 2 === 0 ? -1 : 1;
 
-      const startX = direction === -1 ? 0 : -totalWidth;
-      const endX = direction === -1 ? -totalWidth : 0;
+      const startX = dir === -1 ? 0 : -width;
+      const endX = dir === -1 ? -width : 0;
 
       gsap.set(el, { x: startX });
 
@@ -139,15 +146,41 @@ function MenuItem({
       });
     };
 
-    const timer = setTimeout(() => {
-      requestAnimationFrame(setupMarquee);
-    }, 100);
+    const t = setTimeout(() => requestAnimationFrame(setup), 100);
 
     return () => {
-      clearTimeout(timer);
+      clearTimeout(t);
       animationRef.current?.kill();
     };
   }, [isOpen, speed, index]);
+
+
+
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    const target = document.getElementById(link);
+    if (!target) return;
+
+
+    setTimeout(() => {
+      const extra = window.innerHeight;
+
+      const top =
+        target.getBoundingClientRect().top +
+        window.scrollY +
+        (link === "Projects" ? extra : 0);
+
+      window.scrollTo({
+        top,
+        behavior: "smooth",
+      });
+    },); // match GSAP close duration
+    setTimeout(() => {
+      onToggleMenu(false); // close menu first
+    }, 800)
+
+  };
 
   // ---------------------------------------------------
   // HOVER ENTER
@@ -160,10 +193,10 @@ function MenuItem({
     const x = ev.clientX - rect.left;
     const y = ev.clientY - rect.top;
 
-    const topEdgeDist = (x - rect.width / 2) ** 2 + (y - 0) ** 2;
-    const bottomEdgeDist = (x - rect.width / 2) ** 2 + (y - rect.height) ** 2;
+    const topDist = (x - rect.width / 2) ** 2 + (y - 0) ** 2;
+    const bottomDist = (x - rect.width / 2) ** 2 + (y - rect.height) ** 2;
 
-    const edge = topEdgeDist < bottomEdgeDist ? "top" : "bottom";
+    const edge = topDist < bottomDist ? "top" : "bottom";
 
     gsap
       .timeline({ defaults: animationDefaults })
@@ -189,10 +222,10 @@ function MenuItem({
     const x = ev.clientX - rect.left;
     const y = ev.clientY - rect.top;
 
-    const topEdgeDist = (x - rect.width / 2) ** 2 + (y - 0) ** 2;
-    const bottomEdgeDist = (x - rect.width / 2) ** 2 + (y - rect.height) ** 2;
+    const topDist = (x - rect.width / 2) ** 2 + (y - 0) ** 2;
+    const bottomDist = (x - rect.width / 2) ** 2 + (y - rect.height) ** 2;
 
-    const edge = topEdgeDist < bottomEdgeDist ? "top" : "bottom";
+    const edge = topDist < bottomDist ? "top" : "bottom";
 
     gsap
       .timeline({ defaults: animationDefaults })
@@ -204,9 +237,6 @@ function MenuItem({
       });
   };
 
-  // ---------------------------------------------------
-  // RENDER
-  // ---------------------------------------------------
   return (
     <div
       className="menu__item"
@@ -219,13 +249,10 @@ function MenuItem({
       <a
         ref={textRef}
         className="menu__item-link"
-        href={link}
+        href="#"
+        onClick={handleClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick={(e) => {
-          e.preventDefault();
-          handleScroll?.(link); // 👈 uses parent system
-        }}
         style={{ color: textColor, display: "inline-block" }}
       >
         {text}
@@ -237,20 +264,16 @@ function MenuItem({
         style={{ backgroundColor: marqueeBgColor }}
       >
         <div className="marquee__inner-wrap">
-          <div
-            className="marquee__inner"
-            ref={marqueeInnerRef}
-            aria-hidden="true"
-          >
+          <div className="marquee__inner" ref={marqueeInnerRef}>
             {[...Array(repetitions)].map((_, idx) => (
               <div
-                className="marquee__part"
                 key={idx}
+                className="marquee__part"
                 style={{ color: marqueeTextColor }}
               >
                 <span>{description}</span>
                 <div className="ArrowCircle">
-                  <img src={Arrow} alt={description} />
+                  <img src={Arrow} alt="" />
                 </div>
               </div>
             ))}

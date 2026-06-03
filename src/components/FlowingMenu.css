@@ -127,6 +127,5 @@
 
 .menu__item {
   flex: none;
-  /* IMPORTANT */
   height: auto;
 }
