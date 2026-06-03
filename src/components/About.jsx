@@ -128,6 +128,8 @@ export default function About() {
         const getXPercent = () => {
             const w = window.innerWidth;
 
+            if (w <= 375) return 1.5; 
+            if (w <= 425) return -5.5;  // mobile (needs more space)
             if (w <= 768) return 7;   // mobile (needs more space)
             if (w <= 1024) return 3.5;
             if (w <= 1366) return -5;
