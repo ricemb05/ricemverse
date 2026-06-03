@@ -147,7 +147,7 @@ export default function About() {
                     scrub: true,
                     pin: true,
                     invalidateOnRefresh: true,
-                    markers: true,
+                    // markers: true,
                 },
             });
 
